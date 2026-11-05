@@ -536,12 +536,12 @@ Tick these off before submitting.
 - [ ] Lighthouse Accessibility score is 90 or higher
 - [ ] React Developer Tools shows the component tree, props and state (take a screenshot)
 - [ ] `npm run lint` shows no errors
-- [ ] `npm run build` finishes with no errors, and `npm run preview` works
+- [x] `npm run build` finishes with no errors, and `npm run preview` works
 
 **Repository**
-- [ ] Meaningful commit history
+- [x] Meaningful commit history
 - [ ] README with screenshots
-- [ ] `node_modules/` is NOT uploaded
+- [x] `node_modules/` is NOT uploaded
 
 ---
 
