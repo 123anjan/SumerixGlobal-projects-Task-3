@@ -74,6 +74,16 @@ export default function EmployeeDetailsPage() {
           <section aria-labelledby="contact-h">
             <h2 id="contact-h">Contact information</h2>
             <dl className="details-list">
+              <Row
+                label="Date of birth"
+                value={
+                  employee.dateOfBirth
+                    ? new Date(
+                        `${employee.dateOfBirth}T00:00:00`,
+                      ).toLocaleDateString()
+                    : ""
+                }
+              />
               <Row label="Email" value={employee.email} />
               <Row label="Phone" value={employee.phone} />
               <Row label="City" value={employee.city} />
@@ -82,8 +92,22 @@ export default function EmployeeDetailsPage() {
           <section aria-labelledby="work-h">
             <h2 id="work-h">Work information</h2>
             <dl className="details-list">
+              <Row label="Employee ID" value={employee.employeeId} />
+              <Row label="Employee type" value={employee.employeeType} />
+              <Row label="Location" value={employee.location} />
+              <Row label="Role" value={employee.role} />
               <Row label="Department" value={employee.department} />
               <Row label="Job title" value={employee.title} />
+              <Row
+                label="Date of joining"
+                value={
+                  employee.joiningDate
+                    ? new Date(
+                        `${employee.joiningDate}T00:00:00`,
+                      ).toLocaleDateString()
+                    : ""
+                }
+              />
               <Row label="Availability" value={employee.availability} />
             </dl>
           </section>
@@ -92,4 +116,3 @@ export default function EmployeeDetailsPage() {
     </>
   );
 }
-

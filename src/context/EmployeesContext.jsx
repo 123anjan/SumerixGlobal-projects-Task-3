@@ -40,7 +40,11 @@ export function EmployeesProvider({ children }) {
   }, [employees]);
 
   const addEmployee = useCallback((data) => {
-    const employee = { ...data, id: crypto.randomUUID(), photo: "" };
+    const employee = {
+      ...data,
+      id: crypto.randomUUID(),
+      photo: data.photo ?? "",
+    };
     setEmployees((prev) => [employee, ...(prev ?? [])]);
     return employee;
   }, []);
