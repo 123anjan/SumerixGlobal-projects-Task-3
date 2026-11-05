@@ -504,13 +504,13 @@ The `ed3:` prefix keeps Task 3's data separate from Task 2's (`ed:`), because Gi
 Tick these off before submitting.
 
 **Features**
-- [ ] Login works with `admin` / `admin123`, and a wrong password shows an error
-- [ ] Logged-out users are redirected to the login page
-- [ ] Dashboard shows the correct numbers and department bars
-- [ ] Employee list shows cards
-- [ ] Search works, and clearing the box restores the list
-- [ ] Department and availability filters work, and "Clear filters" works
-- [ ] Employee details page opens from a card (`/employees/<id>`)
+- [x] Login works with `admin` / `admin123`, and a wrong password shows an error
+- [x] Logged-out users are redirected to the login page
+- [x] Dashboard shows the correct numbers and department bars
+- [x] Employee list shows cards
+- [x] Search works, and clearing the box restores the list
+- [x] Department and availability filters work, and "Clear filters" works
+- [x] Employee details page opens from a card (`/employees/<id>`)
 - [ ] Add employee works, and the form shows validation errors for bad input
 - [ ] Edit employee works and keeps the changes
 - [ ] Delete employee works after confirming
