@@ -60,26 +60,26 @@ You do **not** need any backend. Employee data comes from a free public API on t
 
 **Live site:** <https://123anjan.github.io/SumerixGlobal-projects-Task-3/> *(available after the first successful GitHub Pages deployment)*
 
-Add your screenshots to a `screenshots/` folder and link them here:
+Screenshots are stored in [`public/Screenshots/`](public/Screenshots/).
 
 | View | Screenshot |
 |------|-----------|
-| Login page | `![Login](screenshots/login.png)` |
-| Dashboard | `![Dashboard](screenshots/dashboard.png)` |
-| Employee list | `![Employees](screenshots/employees.png)` |
-| Search and filters | `![Search](screenshots/search-filter.png)` |
-| Employee details | `![Details](screenshots/details.png)` |
-| Add employee form (with validation errors) | `![Add](screenshots/add-employee.png)` |
-| Edit employee form | `![Edit](screenshots/edit-employee.png)` |
-| Delete confirmation | `![Delete](screenshots/delete.png)` |
-| Dark mode | `![Dark](screenshots/dark-mode.png)` |
-| Desktop layout | `![Desktop](screenshots/desktop.png)` |
-| Tablet layout | `![Tablet](screenshots/tablet.png)` |
-| Mobile layout and menu | `![Mobile](screenshots/mobile.png)` |
-| Loading state | `![Loading](screenshots/loading.png)` |
-| Error state | `![Error](screenshots/error.png)` |
-| Empty state | `![Empty](screenshots/empty.png)` |
-| React Developer Tools (component tree) | `![DevTools](screenshots/react-devtools.png)` |
+| Login page | ![Login](public/Screenshots/login.png) |
+| Dashboard | ![Dashboard](public/Screenshots/dashboard.png) |
+| Employee list | ![Employees](public/Screenshots/employees.png) |
+| Search and filters | ![Search](public/Screenshots/search-filter.png) |
+| Employee details | ![Details](public/Screenshots/details.png) |
+| Add employee form (with validation errors) | ![Add](public/Screenshots/add-employee.png) |
+| Edit employee form | ![Edit](public/Screenshots/edit-employee.png) |
+| Delete confirmation | ![Delete](public/Screenshots/delete.png) |
+| Dark mode | ![Dark](public/Screenshots/dark-mode.png) |
+| Desktop layout | ![Desktop](public/Screenshots/desktop.png) |
+| Tablet layout | ![Tablet](public/Screenshots/tablet.png) |
+| Mobile layout and menu | ![Mobile](public/Screenshots/mobile0.png) |
+| Loading state | ![Loading](public/Screenshots/loading0.png) |
+| Error state | ![Error](public/Screenshots/error0.png) |
+| Empty state | ![Empty](public/Screenshots/empty0.png) |
+| React Developer Tools (component tree) | ![DevTools](public/Screenshots/react-devtools.png) |
 
 ---
 
@@ -540,7 +540,7 @@ Tick these off before submitting.
 
 **Repository**
 - [x] Meaningful commit history
-- [ ] README with screenshots
+- [x] README with screenshots
 - [x] `node_modules/` is NOT uploaded
 
 ---
