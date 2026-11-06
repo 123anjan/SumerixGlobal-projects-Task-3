@@ -67,6 +67,10 @@ function getFullName(values) {
     .join(" ");
 }
 
+function isValidName(value) {
+  return /^[\p{L}\p{M}]+(?:[ '\u2019.-][\p{L}\p{M}]+)*$/u.test(value.trim());
+}
+
 function getLocalDateString(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -104,7 +108,16 @@ function getInitialPhone(phone) {
 function validate(values) {
   const errors = {};
   if (!values.firstName.trim()) errors.firstName = "First name is required.";
+  else if (!isValidName(values.firstName))
+    errors.firstName =
+      "Use letters, spaces, apostrophes, hyphens, and periods only.";
+  if (values.middleName.trim() && !isValidName(values.middleName))
+    errors.middleName =
+      "Use letters, spaces, apostrophes, hyphens, and periods only.";
   if (!values.lastName.trim()) errors.lastName = "Last name is required.";
+  else if (!isValidName(values.lastName))
+    errors.lastName =
+      "Use letters, spaces, apostrophes, hyphens, and periods only.";
   if (values.dateOfBirth && values.dateOfBirth > getLocalDateString())
     errors.dateOfBirth = "Date of birth cannot be in the future.";
   if (!/^\S+@\S+\.\S+$/.test(values.email))
@@ -326,7 +339,11 @@ export default function EmployeeForm({
           >
             <input type="text" ref={nameRef} {...props("firstName")} />
           </FormField>
-          <FormField id="middleName" label="Middle name">
+          <FormField
+            id="middleName"
+            label="Middle name"
+            error={errors.middleName}
+          >
             <input type="text" {...props("middleName")} />
           </FormField>
           <FormField id="lastName" label="Last name" error={errors.lastName}>
