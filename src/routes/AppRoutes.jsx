@@ -7,6 +7,7 @@ import EmployeesPage from "../pages/EmployeesPage.jsx";
 import EmployeeDetailsPage from "../pages/EmployeeDetailsPage.jsx";
 import AddEmployeePage from "../pages/AddEmployeePage.jsx";
 import EditEmployeePage from "../pages/EditEmployeePage.jsx";
+import AttendancePage from "../pages/AttendancePage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 
 export default function AppRoutes() {
@@ -17,6 +18,7 @@ export default function AppRoutes() {
         <Route element={<Layout />}>
           <Route index element={<DashboardPage />} />
           <Route path="employees" element={<EmployeesPage />} />
+          <Route path="attendance" element={<AttendancePage />} />
           <Route path="employees/new" element={<AddEmployeePage />} />
           <Route path="employees/:id" element={<EmployeeDetailsPage />} />
           <Route path="employees/:id/edit" element={<EditEmployeePage />} />

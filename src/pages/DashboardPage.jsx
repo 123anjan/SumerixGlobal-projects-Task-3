@@ -1,7 +1,8 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiUsers, FiUserCheck, FiUserX, FiGrid } from "react-icons/fi";
 import { useEmployees } from "../context/EmployeesContext.jsx";
+import { useDebounce } from "../hooks/useDebounce.js";
 import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import { DEPARTMENTS } from "../utils/constants.js";
 import StatCard from "../components/common/StatCard.jsx";
@@ -12,6 +13,8 @@ import Avatar from "../components/common/Avatar.jsx";
 export default function DashboardPage() {
   useDocumentTitle("Dashboard");
   const { employees, loading, error, reload, resetData } = useEmployees();
+  const [searchText, setSearchText] = useState("");
+  const searchQuery = useDebounce(searchText.trim().toLowerCase(), 300);
 
   const stats = useMemo(() => {
     const available = employees.filter(
@@ -27,6 +30,15 @@ export default function DashboardPage() {
       })),
     };
   }, [employees]);
+  const searchResults = useMemo(
+    () =>
+      searchQuery
+        ? employees.filter((employee) =>
+            employee.name.toLowerCase().includes(searchQuery),
+          )
+        : [],
+    [employees, searchQuery],
+  );
 
   if (loading) return <Spinner label="Loading dashboard…" />;
   if (error) return <ErrorMessage message={error} onRetry={reload} />;
@@ -53,6 +65,46 @@ export default function DashboardPage() {
           label="Departments"
           value={DEPARTMENTS.length}
         />
+      </section>
+
+      <section className="panel dashboard-search" aria-labelledby="dashboard-search-heading">
+        <h2 id="dashboard-search-heading">Find an employee</h2>
+        <div className="form-field">
+          <label htmlFor="dashboard-employee-search">Search by name</label>
+          <input
+            id="dashboard-employee-search"
+            type="search"
+            className="control"
+            value={searchText}
+            onChange={(event) => setSearchText(event.target.value)}
+            placeholder="Type an employee name..."
+          />
+        </div>
+        {searchQuery && (
+          <div className="dashboard-search-results" aria-live="polite">
+            {searchResults.length ? (
+              <>
+                <p className="muted">
+                  Found {searchResults.length} employee
+                  {searchResults.length === 1 ? "" : "s"}
+                </p>
+                <ul className="plain-list">
+                  {searchResults.map((employee) => (
+                    <li key={employee.id} className="dashboard-search-result">
+                      <Avatar name={employee.name} photo={employee.photo} />
+                      <Link to={`/employees/${employee.id}`}>
+                        {employee.name}
+                      </Link>
+                      <span className="muted">{employee.department}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <p className="muted">No employees found.</p>
+            )}
+          </div>
+        )}
       </section>
 
       <div className="two-col">

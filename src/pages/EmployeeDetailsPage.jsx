@@ -84,6 +84,8 @@ export default function EmployeeDetailsPage() {
                     : ""
                 }
               />
+              <Row label="Gender" value={employee.gender} />
+              <Row label="Marital status" value={employee.maritalStatus} />
               <Row label="Email" value={employee.email} />
               <Row label="Phone" value={employee.phone} />
               <Row label="City" value={employee.city} />
@@ -95,6 +97,7 @@ export default function EmployeeDetailsPage() {
               <Row label="Employee ID" value={employee.employeeId} />
               <Row label="Employee type" value={employee.employeeType} />
               <Row label="Location" value={employee.location} />
+              <Row label="ZIP / Postal code" value={employee.postalCode} />
               <Row label="Role" value={employee.role} />
               <Row label="Department" value={employee.department} />
               <Row label="Job title" value={employee.title} />

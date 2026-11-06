@@ -11,12 +11,15 @@ const COUNTRY_CODES = [
   { value: "+44", label: "UK (+44)" },
   { value: "+61", label: "Australia (+61)" },
 ];
+const EMPLOYEE_ROLES = ["Employee", "Manager", "Admin"];
 
 const EMPTY = {
   firstName: "",
   middleName: "",
   lastName: "",
   dateOfBirth: "",
+  gender: "",
+  maritalStatus: "",
   email: "",
   phone: "",
   phoneCountryCode: "+91",
@@ -24,8 +27,9 @@ const EMPTY = {
   joiningDate: "",
   city: "",
   location: "",
+  postalCode: "",
   employeeType: "Full-time",
-  role: "",
+  role: "Employee",
   department: DEPARTMENTS[0],
   title: "",
   availability: "Available",
@@ -154,6 +158,9 @@ export default function EmployeeForm({
     ...initialValues,
     ...getInitialNames(initialValues),
     employeeId: initialValues?.employeeId ?? "",
+    role: EMPLOYEE_ROLES.includes(initialValues?.role)
+      ? initialValues.role
+      : EMPTY.role,
     ...getInitialPhone(initialValues?.phone),
   }));
   const [errors, setErrors] = useState({});
@@ -266,7 +273,12 @@ export default function EmployeeForm({
     <form className="panel form" onSubmit={handleSubmit} noValidate>
       <fieldset className="form-section">
         <legend>Personal Information</legend>
-        <FormField id="photo" label="Employee photo" error={photoError}>
+        <FormField
+          id="photo"
+          label="Employee photo"
+          error={photoError}
+          labelFor={null}
+        >
           <div className="employee-photo-field">
             <div className="employee-photo-preview">
               <Avatar name={getFullName(values)} photo={values.photo} />
@@ -278,11 +290,20 @@ export default function EmployeeForm({
                 ref={photoInputRef}
                 type="file"
                 accept="image/*"
-                className="control"
+                className="visually-hidden"
+                tabIndex={-1}
+                aria-hidden="true"
                 aria-invalid={Boolean(photoError)}
                 aria-describedby={photoError ? "photo-error" : undefined}
                 onChange={handlePhotoChange}
               />
+              <button
+                type="button"
+                className="btn btn-outline"
+                onClick={() => photoInputRef.current?.click()}
+              >
+                Choose File
+              </button>
               <span className="muted">Images only, up to 5 MB.</span>
               {values.photo && (
                 <button
@@ -318,6 +339,25 @@ export default function EmployeeForm({
             max={today}
             {...props("dateOfBirth")}
           />
+        </FormField>
+        <FormField id="gender" label="Gender">
+          <select {...props("gender")}>
+            <option value="">Select gender</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non-binary</option>
+            <option>Prefer not to say</option>
+          </select>
+        </FormField>
+        <FormField id="maritalStatus" label="Marital status">
+          <select {...props("maritalStatus")}>
+            <option value="">Select marital status</option>
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+            <option>Prefer not to say</option>
+          </select>
         </FormField>
         <FormField id="email" label="Email" error={errors.email}>
           <input type="email" {...props("email")} />
@@ -371,6 +411,26 @@ export default function EmployeeForm({
       </fieldset>
       <fieldset className="form-section">
         <legend>Work Information</legend>
+        <label className="vacant-positions-toggle">
+          <input
+            type="checkbox"
+            checked={showVacantOnly}
+            onChange={(event) => setShowVacantOnly(event.target.checked)}
+          />
+          Only Show Vacant Positions
+        </label>
+        <FormField id="title" label="Job title" error={errors.title}>
+          <input
+            type="text"
+            list="job-title-suggestions"
+            {...props("title")}
+          />
+          <datalist id="job-title-suggestions">
+            {titleSuggestions.map((title) => (
+              <option key={title} value={title} />
+            ))}
+          </datalist>
+        </FormField>
         <FormField id="employeeId" label="Employee ID">
           <input
             type="text"
@@ -393,6 +453,13 @@ export default function EmployeeForm({
         <FormField id="location" label="Location">
           <input type="text" {...props("location")} />
         </FormField>
+        <FormField id="postalCode" label="ZIP / Postal code">
+          <input
+            type="text"
+            autoComplete="postal-code"
+            {...props("postalCode")}
+          />
+        </FormField>
         <FormField id="department" label="Department">
           <select {...props("department")}>
             {DEPARTMENTS.map((d) => (
@@ -400,29 +467,22 @@ export default function EmployeeForm({
             ))}
           </select>
         </FormField>
-        <FormField id="role" label="Role">
-          <input type="text" {...props("role")} />
-        </FormField>
-        <label className="vacant-positions-toggle">
-          <input
-            type="checkbox"
-            checked={showVacantOnly}
-            onChange={(event) => setShowVacantOnly(event.target.checked)}
-          />
-          Only Show Vacant Positions
-        </label>
-        <FormField id="title" label="Job title" error={errors.title}>
-          <input
-            type="text"
-            list="job-title-suggestions"
-            {...props("title")}
-          />
-          <datalist id="job-title-suggestions">
-            {titleSuggestions.map((title) => (
-              <option key={title} value={title} />
-            ))}
-          </datalist>
-        </FormField>
+        <fieldset className="role-options">
+          <legend>Role</legend>
+          {EMPLOYEE_ROLES.map((role) => (
+            <label key={role} htmlFor={`role-${role.toLowerCase()}`}>
+              <input
+                id={`role-${role.toLowerCase()}`}
+                type="radio"
+                name="role"
+                value={role}
+                checked={values.role === role}
+                onChange={handleChange}
+              />
+              {role}
+            </label>
+        ))}
+        </fieldset>
         <FormField id="availability" label="Availability">
           <select {...props("availability")}>
             <option>Available</option>

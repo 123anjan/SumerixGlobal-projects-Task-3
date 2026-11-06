@@ -14,4 +14,5 @@ export const STORAGE_KEYS = {
   theme: 'ed3:theme',
   auth: 'ed3:auth',
   employees: 'ed3:employees',
+  attendance: 'ed3:attendance',
 };

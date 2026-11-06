@@ -50,6 +50,9 @@ export default function Navbar() {
           <NavLink to="/employees" end className={linkClass} onClick={close}>
             Employees
           </NavLink>
+          <NavLink to="/attendance" className={linkClass} onClick={close}>
+            Attendance
+          </NavLink>
           <NavLink to="/employees/new" className={linkClass} onClick={close}>
             Add Employee
           </NavLink>

@@ -183,6 +183,17 @@ img {
 .employee-photo-controls input[type="file"] {
   max-width: 100%;
 }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .form {
   display: grid;
   gap: 1rem;
@@ -221,6 +232,30 @@ img {
   color: var(--text);
   font-size: 0.9rem;
 }
+.role-options {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.role-options legend {
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.role-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
 .form-field label {
   display: block;
   margin-bottom: 0.25rem;
@@ -255,6 +290,142 @@ img {
   margin-bottom: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
+.attendance-panel {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.attendance-date {
+  width: min(100%, 240px);
+}
+.attendance-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.attendance-summary strong {
+  color: var(--text);
+}
+.attendance-table-wrap {
+  overflow-x: auto;
+}
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.attendance-table th,
+.attendance-table td {
+  padding: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.attendance-table thead th {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.attendance-employee {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.attendance-status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.attendance-status-present {
+  color: #166534;
+  background: #dcfce7;
+}
+.attendance-status-absent {
+  color: #991b1b;
+  background: #fee2e2;
+}
+.attendance-status-on-leave {
+  color: #92400e;
+  background: #fef3c7;
+}
+.attendance-status-unmarked {
+  color: var(--muted);
+  background: var(--bg);
+}
+.attendance-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: flex-end;
+  background: rgb(15 23 42 / 45%);
+}
+.attendance-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 480px);
+  height: 100%;
+  overflow: auto;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+.attendance-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.attendance-modal-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.attendance-modal-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem 1.25rem 5rem;
+}
+.attendance-modal-section {
+  display: grid;
+  gap: 1rem;
+}
+.attendance-modal-section h3 {
+  margin: 0;
+}
+.attendance-hours-field {
+  display: grid;
+  gap: 0.4rem;
+}
+.attendance-hours-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.attendance-comments {
+  min-height: 5rem;
+  resize: vertical;
+}
+.attendance-modal-actions {
+  position: sticky;
+  bottom: -1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin: 0 -1.25rem -1rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
 
 /* dashboard */
 .stats {
@@ -262,6 +433,25 @@ img {
   gap: 1rem;
   margin-bottom: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.dashboard-search {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.dashboard-search h2,
+.dashboard-search-results p {
+  margin: 0;
+}
+.dashboard-search-results {
+  display: grid;
+  gap: 0.5rem;
+}
+.dashboard-search-result {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
 }
 .stat-card {
   display: flex;
@@ -402,15 +592,158 @@ img {
 /* login */
 .login-wrap {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #f1f1f1;
 }
 .login-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 1020px;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  overflow: hidden;
+  border: 1px solid #e4a900;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgb(15 23 42 / 14%);
 }
-.login-card h1 {
-  margin-top: 0;
-  font-size: 1.4rem;
+.login-brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+  overflow: hidden;
+  padding: 2.5rem;
+  color: #fff;
+  background-color: #d99700;
+  background-image:
+    repeating-linear-gradient(125deg, transparent 0 39px, rgb(255 255 255 / 24%) 40px 42px, transparent 43px 72px),
+    repeating-linear-gradient(35deg, transparent 0 63px, rgb(75 47 0 / 23%) 64px 67px, transparent 68px 105px),
+    radial-gradient(ellipse at 9% 92%, #f9b900 0 32%, transparent 32.5%),
+    linear-gradient(135deg, #533b00, #e4a100 58%, #ffc629);
+}
+.login-brand::after {
+  position: absolute;
+  top: -12%;
+  right: -37%;
+  width: 74%;
+  height: 124%;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+}
+.login-brand::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    125deg,
+    rgb(0 0 0 / 42%),
+    rgb(0 0 0 / 12%) 68%,
+    transparent
+  );
+  content: "";
+}
+.login-brand-copy,
+.login-brand-caption {
+  position: relative;
+  z-index: 1;
+  max-width: 270px;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 48%);
+}
+.login-brand-copy p,
+.login-brand-caption {
+  margin: 0;
+}
+.login-brand-name {
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+.login-brand-name span {
+  font-weight: 400;
+}
+.login-brand-caption {
+  max-width: 250px;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+.login-form {
+  align-self: center;
+  display: grid;
+  gap: 1.4rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 2.75rem;
+}
+.login-form-heading h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+.login-form-heading p {
+  margin: 0;
+  line-height: 1.55;
+}
+.login-eyebrow {
+  margin-bottom: 0.6rem !important;
+  color: #795300;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.login-form .form-field label {
+  margin-bottom: 0.4rem;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.login-form .control {
+  min-height: 46px;
+}
+.login-submit {
+  min-height: 46px;
+  justify-content: center;
+  background: #8a5c00;
+  color: #fff;
+}
+.login-submit:hover {
+  background: #684500;
+}
+.login-demo {
+  margin: 0;
+  color: #475569;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .login-wrap {
+    padding: 1rem;
+  }
+  .login-card {
+    max-width: 480px;
+    grid-template-columns: 1fr;
+  }
+  .login-brand {
+    min-height: 180px;
+    padding: 1.5rem;
+  }
+  .login-brand::after {
+    top: -55%;
+    right: -28%;
+    width: 70%;
+    height: 210%;
+  }
+  .login-brand-caption {
+    max-width: 220px;
+    font-size: 0.9rem;
+  }
+  .login-form {
+    padding: 2rem 1.5rem;
+  }
 }
