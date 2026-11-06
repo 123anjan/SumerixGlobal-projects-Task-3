@@ -511,31 +511,31 @@ Tick these off before submitting.
 - [x] Search works, and clearing the box restores the list
 - [x] Department and availability filters work, and "Clear filters" works
 - [x] Employee details page opens from a card (`/employees/<id>`)
-- [ ] Add employee works, and the form shows validation errors for bad input
-- [ ] Edit employee works and keeps the changes
-- [ ] Delete employee works after confirming
-- [ ] Changes are still there after refreshing the page
-- [ ] Dark mode works and is remembered after a refresh
-- [ ] Logout works
-- [ ] A wrong URL shows the 404 page
+- [x] Add employee works, and the form shows validation errors for bad input
+- [x] Edit employee works and keeps the changes
+- [x] Delete employee works after confirming
+- [x] Changes are still there after refreshing the page
+- [x] Dark mode works and is remembered after a refresh
+- [x] Logout works
+- [x] A wrong URL shows the 404 page
 
 **States**
-- [ ] Loading spinner appears (DevTools → Network → **Slow 3G**, then **Reset demo data**)
-- [ ] Error screen and Retry button appear (DevTools → Network → **Offline**, then **Reset demo data**)
-- [ ] Empty state appears (search for `zzzz`)
+- [x] Loading spinner appears (DevTools → Network → **Slow 3G**, then **Reset demo data**)
+- [x] Error screen and Retry button appear (DevTools → Network → **Offline**, then **Reset demo data**)
+- [x] Empty state appears (search for `zzzz`)
 
 **Devices and browsers**
-- [ ] Desktop layout (1280 px or wider)
-- [ ] Tablet layout (about 768 px)
-- [ ] Mobile layout (about 375 px), and the hamburger menu opens and closes
-- [ ] Works in Chrome and Firefox (DevTools device toolbar: `Ctrl + Shift + M`)
+- [x] Desktop layout (1280 px or wider)
+- [x] Tablet layout (about 768 px)
+- [x] Mobile layout (about 375 px), and the hamburger menu opens and closes
+- [x] Works in Chrome and Firefox (DevTools device toolbar: `Ctrl + Shift + M`)
 
 **Quality**
-- [ ] No red errors in the Console
-- [ ] Everything works with the keyboard only
+- [x] No red errors in the Console
+- [x] Everything works with the keyboard only
 - [ ] Lighthouse Accessibility score is 90 or higher
 - [ ] React Developer Tools shows the component tree, props and state (take a screenshot)
-- [ ] `npm run lint` shows no errors
+- [x] `npm run lint` shows no errors
 - [x] `npm run build` finishes with no errors, and `npm run preview` works
 
 **Repository**
