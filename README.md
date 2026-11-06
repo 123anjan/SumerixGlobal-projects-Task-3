@@ -58,7 +58,7 @@ You do **not** need any backend. Employee data comes from a free public API on t
 
 ## 2. Live Demo and Screenshots
 
-**Live site:** `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/` *(replace after deploying, or remove this line)*
+**Live site:** <https://123anjan.github.io/SumerixGlobal-projects-Task-3/> *(available after the first successful GitHub Pages deployment)*
 
 Add your screenshots to a `screenshots/` folder and link them here:
 
@@ -733,67 +733,32 @@ Tick these off before submitting.
 
 ## 17. Deploying the Project
 
-> **Use a separate Git repository for Task 3.** If `Task-3` sits inside the same Git repo as Task 2, `npm run deploy` will overwrite Task 2's `gh-pages` branch. Run `git init` inside `Task-3`, create a new GitHub repo, and add `Task-3/` to the parent folder's `.gitignore`.
+GitHub Actions builds and deploys this project to GitHub Pages whenever a commit is pushed to `main`. You can also start a deployment from the repository's **Actions** tab using **Deploy to GitHub Pages → Run workflow**.
 
-### Option 1: GitHub Pages with `gh-pages`
+1. Push the project to the `main` branch of `123anjan/SumerixGlobal-projects-Task-3`.
+2. In GitHub, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
+3. Open the **Actions** tab and wait for the **Deploy to GitHub Pages** workflow to complete.
+4. Visit <https://123anjan.github.io/SumerixGlobal-projects-Task-3/>.
 
-1. In `vite.config.js`, set the repo name:
-   ```js
-   export default defineConfig(({ command }) => ({
-     base: command === 'build' ? '/YOUR-REPO-NAME/' : '/',
-     plugins: [react()],
-   }));
-   ```
-2. Make sure `package.json` has these scripts:
-   ```json
-   "postbuild": "node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\"",
-   "predeploy": "npm run build",
-   "deploy": "gh-pages -d dist"
-   ```
-3. Run:
-   ```bash
-   npm install -D gh-pages
-   npm run deploy
-   ```
-4. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `gh-pages`, folder `/ (root)` → Save**.
-5. Wait 1–2 minutes and open `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`.
+The Vite base path is configured for this repository. The build also creates `dist/404.html` so client-side routes continue to work when opened directly or refreshed.
 
-### Option 2: Vercel or Netlify
-
-1. Push the code to GitHub.
-2. Import the repository on <https://vercel.com> or <https://netlify.com>.
-3. Framework: **Vite**. Build command: `npm run build`. Output directory: `dist`.
-4. The `base` path is not needed there, so use `'/'`, or set an environment variable.
-
-Before deploying, run `npm run build` and `npm run preview` locally to make sure the production build works.
+To check the production build locally, run `npm run build` followed by `npm run preview`.
 
 ---
 
-## 18. Uploading to GitHub (First Time)
+## 18. Pushing Changes to GitHub
 
-1. Create a new **public** repository on GitHub (do not add a README or .gitignore there).
-2. In the `Task-3` folder run:
-
-```bash
-git init
-git add .
-git commit -m "feat: scaffold React project with Vite"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-git push -u origin main
-```
-
-3. Keep committing small, meaningful changes as you build:
+This project is already connected to `123anjan/SumerixGlobal-projects-Task-3`. After making and committing changes, push the `main` branch to trigger the Pages deployment workflow:
 
 ```bash
-git add .
-git commit -m "feat: add employee list and filters"
-git push
+git add <files>
+git commit -m "feat: describe your change"
+git push origin main
 ```
 
-**Commit message tips:** start with `feat:` (new feature), `fix:` (bug fix), `docs:` (documentation) or `style:` (design changes), followed by a short description. Examples: `feat: add context providers`, `feat: add add/edit/delete forms`, `docs: add README and screenshots`.
+For the first deployment, enable **Settings → Pages → Build and deployment → Source: GitHub Actions**. You can then monitor deployments in the **Actions** tab.
 
-**Without typing commands:** in VS Code, open the `Task-3` folder, use the **Source Control** panel → **Initialize Repository** → **Commit** → **Publish Branch**.
+Commit message tips: start with `feat:` (new feature), `fix:` (bug fix), `docs:` (documentation), or `style:` (design changes), followed by a short description.
 
 ---
 
@@ -821,7 +786,7 @@ git push
 - Image upload for employee photos
 - Export the employee list to CSV
 - Unit tests (Vitest and React Testing Library) and end-to-end tests (Playwright)
-- Cloud deployment with a CI/CD pipeline (GitHub Actions)
+- Automated tests (Vitest, React Testing Library, and Playwright)
 
 ### Connection to Task 4
 
