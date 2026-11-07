@@ -60,6 +60,8 @@ You do **not** need any backend. Employee data comes from a free public API on t
 
 **Live site:** <https://123anjan.github.io/SumerixGlobal-projects-Task-3/> *(available after the first successful GitHub Pages deployment)*
 
+**Project documentation:** [Read the Task 3 project document (PDF)](public/Task3_Employee_Management_Dashboard_Project_Documentation.pdf) for the project overview and supporting details.
+
 Screenshots are stored in [`public/Screenshots/`](public/Screenshots/).
 
 | View | Screenshot |
