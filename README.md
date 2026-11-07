@@ -535,8 +535,8 @@ Tick these off before submitting.
 **Quality**
 - [x] No red errors in the Console
 - [x] Everything works with the keyboard only
-- [ ] Lighthouse Accessibility score is 90 or higher
-- [ ] React Developer Tools shows the component tree, props and state (take a screenshot)
+- [x] Lighthouse Accessibility score is 90 or higher
+- [x] React Developer Tools shows the component tree, props and state (take a screenshot)
 - [x] `npm run lint` shows no errors
 - [x] `npm run build` finishes with no errors, and `npm run preview` works
 
